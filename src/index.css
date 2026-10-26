@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gold-primary: #f59e0b;
+    --gold-glow: rgba(245, 158, 11, 0.25);
+    --navy-bg: #070b19;
+    --navy-card: rgba(15, 23, 42, 0.75);
+  }
+
+  body {
+    background-color: #070b19;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+  }
+}
+
+.font-serif-sacred {
+  font-family: 'Cinzel', 'Marcellus', Georgia, serif;
+}
+
+.font-marcellus {
+  font-family: 'Marcellus', Georgia, serif;
+}
+
+.font-sanskrit {
+  font-family: 'Noto Sans Devanagari', 'Rozha One', serif;
+}
+
+.font-sindhi {
+  font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.8;
+}
+
+.font-urdu {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', 'Jameel Noori Nastaleeq', serif;
+  line-height: 2.1;
+}
+
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', 'Rozha One', sans-serif;
+}
+
+.font-tamil {
+  font-family: 'Noto Sans Tamil', system-ui, sans-serif;
+  line-height: 1.7;
+}
+
+.font-gujarati {
+  font-family: 'Noto Sans Gujarati', system-ui, sans-serif;
+  line-height: 1.7;
+}
+
+/* Custom gold gradient borders and backdrops */
+.gold-gradient-border {
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  box-shadow: 0 4px 20px -2px rgba(245, 158, 11, 0.08);
+}
+
+.gold-gradient-border-hover:hover {
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 8px 30px -4px rgba(245, 158, 11, 0.16);
+}
+
+.gold-text-glow {
+  text-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(180, 83, 9, 0.25) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fde68a;
+}
+
+.shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 158, 11, 0) 0%,
+    rgba(245, 158, 11, 0.12) 50%,
+    rgba(245, 158, 11, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom scrollbars for mobile & desktop */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070b19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.5);
+}

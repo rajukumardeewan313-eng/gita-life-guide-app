@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- AI Studio Sandbox: HMR WebSocket Guard (HMR is disabled in this environment) -->
+    <script>
+      (function() {
+        if (typeof window === 'undefined') return;
+
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event.reason && (
+            (typeof event.reason.message === 'string' && event.reason.message.includes('WebSocket closed without opened')) ||
+            (typeof event.reason === 'string' && event.reason.includes('WebSocket closed without opened'))
+          )) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        });
+
+        window.addEventListener('error', function(event) {
+          if (event.message && event.message.includes('WebSocket closed without opened')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+
+        if (window.WebSocket) {
+          var RealWebSocket = window.WebSocket;
+          var MockWebSocket = function(url, protocols) {
+            var isVite = (protocols === 'vite-hmr' || protocols === 'vite-ping') ||
+                         (typeof url === 'string' && (url.includes('token=') || url.includes('/@vite/')));
+            if (isVite) {
+              var target = new EventTarget();
+              target.readyState = 1;
+              target.OPEN = 1;
+              target.CLOSED = 3;
+              target.CONNECTING = 0;
+              target.CLOSING = 2;
+              target.send = function() {};
+              target.close = function() {};
+              setTimeout(function() {
+                try {
+                  target.dispatchEvent(new Event('open'));
+                } catch (_) {}
+              }, 0);
+              return target;
+            }
+            return new RealWebSocket(url, protocols);
+          };
+          MockWebSocket.prototype = RealWebSocket.prototype;
+          MockWebSocket.OPEN = RealWebSocket.OPEN;
+          MockWebSocket.CLOSED = RealWebSocket.CLOSED;
+          MockWebSocket.CONNECTING = RealWebSocket.CONNECTING;
+          MockWebSocket.CLOSING = RealWebSocket.CLOSING;
+          window.WebSocket = MockWebSocket;
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Gita Life Guide — Ancient Wisdom. Everyday Solutions.</title>
+    <meta name="description" content="Bhagavad Gita educational assistant helping you explore verified scripture and apply timeless wisdom to modern everyday life challenges." />
+    
+    <!-- OpenGraph & Social Sharing -->
+    <meta property="og:title" content="Gita Life Guide — Ancient Wisdom. Everyday Solutions." />
+    <meta property="og:description" content="Bhagavad Gita educational assistant helping you explore verified scripture and apply timeless wisdom to modern everyday life challenges." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/pwa-512x512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gita Life Guide — Ancient Wisdom. Everyday Solutions." />
+    <meta name="twitter:description" content="Bhagavad Gita educational assistant helping you explore verified scripture and apply timeless wisdom to modern everyday life challenges." />
+    <meta name="twitter:image" content="/pwa-512x512.png" />
+
+    <!-- Mobile & PWA Meta -->
+    <meta name="theme-color" content="#070b19" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Gita Guide" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Google Fonts for Spiritual Elegance, Devanagari, Urdu/Sindhi, Tamil, and Gujarati -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Marcellus&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#070b19] text-[#f8fafc] antialiased selection:bg-amber-500/30 selection:text-amber-200 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

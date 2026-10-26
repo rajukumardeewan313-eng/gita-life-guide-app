@@ -1,0 +1,6 @@
+{
+  "name": "Gita Life Guide — Ancient Wisdom. Everyday Solutions.",
+  "description": "Bhagavad Gita educational assistant helping you explore verified scripture and apply timeless wisdom to modern everyday life challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
